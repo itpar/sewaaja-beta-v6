@@ -81,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Register"),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Container(
         padding: EdgeInsets.all(10.0),
@@ -93,7 +93,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     gradient:
-                    LinearGradient(colors: [Colors.amber, Colors.pink]),
+                    LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextField(
                   controller: _username,
@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     gradient:
-                    LinearGradient(colors: [Colors.amber, Colors.pink]),
+                    LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextField(
                   controller: _password,
@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                       gradient:
-                      LinearGradient(colors: [Colors.amber, Colors.pink]),
+                      LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
                       borderRadius: BorderRadius.circular(20.0)),
                   child: ListTile(
                       title: Text("Status / Level : "),
@@ -149,12 +149,12 @@ class _RegisterPageState extends State<RegisterPage> {
               Material(
                 borderRadius: BorderRadius.circular(20.0),
                 elevation: 10.0,
-                color: Colors.pink,
+                color: Colors.blueAccent,
                 child: MaterialButton(
                   onPressed: () {
                     insertApi();
                   },
-                  color: Colors.pink,
+                  color: Colors.blueAccent,
                   child: Text("REGISTER"),
                 ),
               ),
@@ -162,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 15.0,
               ),
               Center(
-                child: Text(msg, style: TextStyle(color: Colors.red)),
+                child: Text(msg, style: TextStyle(color: Colors.blueAccent)),
               )
             ],
           ),
