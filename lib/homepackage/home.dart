@@ -7,7 +7,7 @@ import 'package:flutter_loginn/homepackage/car_widget.dart';
 import 'package:flutter_loginn/homepackage/dealer_widget.dart';
 import 'package:flutter_loginn/homepackage/available_cars.dart';
 import 'package:flutter_loginn/homepackage/book_car.dart';
-
+import 'package:flutter_loginn/main.dart';
 
 class HomePage extends StatelessWidget {
   final String username;
@@ -55,19 +55,20 @@ class _ShowroomState extends State<Showroom> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        brightness: Brightness.light,
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 350),
-            child: Icon(
-              Icons.menu,
-              color: Colors.black,
-              size: 28,
-            ),
-          ),
-
+        title: Text('Sewa Aja'),
+        actions: <Widget>[
+          IconButton(
+              icon:
+              Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                ); // do something
+              }),
         ],
         centerTitle: false,
       ),
