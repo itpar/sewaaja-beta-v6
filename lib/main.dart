@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './api.dart';
 import 'package:http/http.dart' as http;
 import './register.dart';
+import 'register.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -60,37 +61,22 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Login"),
+          title: Container(child: Text("Login")),
           backgroundColor: Colors.blueAccent,
           elevation: 0.5,
-          actions: <Widget>[
-            FlatButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RegisterPage()));
-              },
-              child: Text("Register"),
-              splashColor: Colors.amber,
-              highlightColor: Colors.amber,
-            )
-          ],
         ),
         body: Container(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.only(top: 100.0),
           child: Center(
             child: ListView(
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      gradient:
-                      LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
-                      borderRadius: BorderRadius.circular(20.0)),
+                  padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 25.0),
                   child: TextField(
                     controller: _username,
                     decoration: InputDecoration(
-                        border: InputBorder.none,
+                        border: OutlineInputBorder(),
                         labelText: "Username",
                         hintText: "Username"),
                   ),
@@ -100,16 +86,13 @@ class _LoginState extends State<Login> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      gradient:
-                      LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
-                      borderRadius: BorderRadius.circular(20.0)),
+                  padding:
+                      EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                   child: TextField(
                     controller: _password,
                     obscureText: true,
                     decoration: InputDecoration(
-                        border: InputBorder.none,
+                        border: OutlineInputBorder(),
                         labelText: "Password",
                         hintText: "Password"),
                   ),
@@ -117,20 +100,49 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 20.0,
                 ),
-                Material(
-                  borderRadius: BorderRadius.circular(20.0),
-                  elevation: 10.0,
-                  color: Colors.blueAccent,
-                  child: MaterialButton(
-                    onPressed: () {
-                      getApi(_username.text, _password.text);
-                    },
-                    color: Colors.blueAccent,
-                    child: Text("LOGIN"),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
+                  child: ButtonTheme(
+                    minWidth: 200.0,
+                    height: 50.0,
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      color: Colors.blueAccent,
+                      elevation: 10.0,
+                      child: Text("Login"),
+                      onPressed: () {
+                        getApi(_username.text, _password.text);
+                      },
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 15.0,
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
+                  child: ButtonTheme(
+                    minWidth: 200.0,
+                    height: 50.0,
+                    child: RaisedButton(
+                      textColor: Colors.white,
+                      color: Colors.blueAccent,
+                      elevation: 10.0,
+                      child: Text("SIGN UP"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPage()),
+                        );
+                      },
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                    ),
+                  ),
                 ),
                 Center(
                   child: Text(msgError, style: TextStyle(color: Colors.red)),

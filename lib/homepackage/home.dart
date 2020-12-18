@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -19,8 +20,7 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       home: Showroom(),
       title: 'Flutter Demo',
-      theme:
-      ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.muliTextTheme(),
@@ -53,29 +53,73 @@ class _ShowroomState extends State<Showroom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blueAccent,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  child: DrawerHeader(
+                    decoration:
+                    BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/parlogo.png"),
+                            fit: BoxFit.contain)),
+                  ),
+                ),
+              ),
+
+              Expanded(
+                flex: 2,
+                child: ListView(children: [
+                  ListTile(
+                    title: Text("Home", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  ListTile(
+                    title: Text("Logout", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      ); // do something
+                    },
+                  )
+                ]),
+              )
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Sewa Aja'),
+        title: Container(
+            padding: EdgeInsets.only(left: 110.0),
+            child: Image.asset("assets/images/parlogo.png",
+                height: 70.0, width: 70.0)),
         actions: <Widget>[
-          IconButton(
-              icon:
-              Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login()),
-                ); // do something
-              }),
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0, top: 40.0),
+            child: IconButton(
+                icon: Text("Log out"),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  ); // do something
+                }),
+          ),
         ],
         centerTitle: false,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Container(
             padding: EdgeInsets.only(bottom: 10),
             child: Padding(
@@ -93,7 +137,9 @@ class _ShowroomState extends State<Showroom> {
                   ),
                   filled: true,
                   fillColor: Colors.grey[100],
-                  contentPadding: EdgeInsets.only(left: 30,),
+                  contentPadding: EdgeInsets.only(
+                    left: 30,
+                  ),
                   suffixIcon: Padding(
                     padding: EdgeInsets.only(right: 24.0, left: 16.0),
                     child: Icon(
@@ -106,7 +152,6 @@ class _ShowroomState extends State<Showroom> {
               ),
             ),
           ),
-
           Expanded(
             child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),
@@ -120,13 +165,11 @@ class _ShowroomState extends State<Showroom> {
                 ),
                 child: Column(
                   children: [
-
                     Padding(
                       padding: EdgeInsets.all(16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           Text(
                             "TOP DEALS",
                             style: TextStyle(
@@ -135,10 +178,8 @@ class _ShowroomState extends State<Showroom> {
                               color: Colors.grey[400],
                             ),
                           ),
-
                           Row(
                             children: [
-
                               Text(
                                 "view all",
                                 style: TextStyle(
@@ -147,24 +188,19 @@ class _ShowroomState extends State<Showroom> {
                                   color: kPrimaryColor,
                                 ),
                               ),
-
                               SizedBox(
                                 width: 8,
                               ),
-
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 12,
                                 color: kPrimaryColor,
                               ),
-
                             ],
                           ),
-
                         ],
                       ),
                     ),
-
                     Container(
                       height: 280,
                       child: ListView(
@@ -173,12 +209,12 @@ class _ShowroomState extends State<Showroom> {
                         children: buildDeals(),
                       ),
                     ),
-
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => AvailableCars()),
+                          MaterialPageRoute(
+                              builder: (context) => AvailableCars()),
                         );
                       },
                       child: Padding(
@@ -195,12 +231,10 @@ class _ShowroomState extends State<Showroom> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-
                                   Text(
                                     "Available Cars",
                                     style: TextStyle(
@@ -209,7 +243,6 @@ class _ShowroomState extends State<Showroom> {
                                       color: Colors.white,
                                     ),
                                   ),
-
                                   Text(
                                     "Long term and short term",
                                     style: TextStyle(
@@ -217,10 +250,8 @@ class _ShowroomState extends State<Showroom> {
                                       color: Colors.white,
                                     ),
                                   ),
-
                                 ],
                               ),
-
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -237,19 +268,16 @@ class _ShowroomState extends State<Showroom> {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
                       ),
                     ),
-
                     Padding(
                       padding: EdgeInsets.all(16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
                           Text(
                             "TOP DEALERS",
                             style: TextStyle(
@@ -258,10 +286,8 @@ class _ShowroomState extends State<Showroom> {
                               color: Colors.grey[400],
                             ),
                           ),
-
                           Row(
                             children: [
-
                               Text(
                                 "view all",
                                 style: TextStyle(
@@ -270,24 +296,19 @@ class _ShowroomState extends State<Showroom> {
                                   color: kPrimaryColor,
                                 ),
                               ),
-
                               SizedBox(
                                 width: 8,
                               ),
-
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 12,
                                 color: kPrimaryColor,
                               ),
-
                             ],
                           ),
-
                         ],
                       ),
                     ),
-
                     Container(
                       height: 150,
                       margin: EdgeInsets.only(bottom: 16),
@@ -297,13 +318,11 @@ class _ShowroomState extends State<Showroom> {
                         children: buildDealers(),
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
           ),
-
         ],
       ),
       bottomNavigationBar: Container(
@@ -313,8 +332,7 @@ class _ShowroomState extends State<Showroom> {
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
-            )
-        ),
+            )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: buildNavigationItems(),
@@ -323,25 +341,22 @@ class _ShowroomState extends State<Showroom> {
     );
   }
 
-  List<Widget> buildDeals(){
+  List<Widget> buildDeals() {
     List<Widget> list = [];
     for (var i = 0; i < cars.length; i++) {
-      list.add(
-          GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => BookCar(car: cars[i])),
-                );
-              },
-              child: buildCar(cars[i], i)
-          )
-      );
+      list.add(GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => BookCar(car: cars[i])),
+            );
+          },
+          child: buildCar(cars[i], i)));
     }
     return list;
   }
 
-  List<Widget> buildDealers(){
+  List<Widget> buildDealers() {
     List<Widget> list = [];
     for (var i = 0; i < dealers.length; i++) {
       list.add(buildDealer(dealers[i], i));
@@ -349,7 +364,7 @@ class _ShowroomState extends State<Showroom> {
     return list;
   }
 
-  List<Widget> buildNavigationItems(){
+  List<Widget> buildNavigationItems() {
     List<Widget> list = [];
     for (var navigationItem in navigationItems) {
       list.add(buildNavigationItem(navigationItem));
@@ -357,7 +372,7 @@ class _ShowroomState extends State<Showroom> {
     return list;
   }
 
-  Widget buildNavigationItem(NavigationItem item){
+  Widget buildNavigationItem(NavigationItem item) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -368,20 +383,18 @@ class _ShowroomState extends State<Showroom> {
         width: 50,
         child: Stack(
           children: <Widget>[
-
             selectedItem == item
                 ? Center(
-              child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kPrimaryColorShadow,
-                ),
-              ),
-            )
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kPrimaryColorShadow,
+                      ),
+                    ),
+                  )
                 : Container(),
-
             Center(
               child: Icon(
                 item.iconData,
@@ -389,11 +402,9 @@ class _ShowroomState extends State<Showroom> {
                 size: 24,
               ),
             )
-
           ],
         ),
       ),
     );
   }
-
 }
