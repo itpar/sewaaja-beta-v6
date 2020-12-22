@@ -9,6 +9,9 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _nama = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _no_tlp_hp = TextEditingController();
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
   TextEditingController _level = TextEditingController();
@@ -30,6 +33,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   insertApi() async {
     final res = await http.post(baseUrl, body: {
+      'nama': _nama.text,
+      'email': _email.text,
+      'no_tlp_hp': _no_tlp_hp.text,
       'username': _username.text,
       'password': _password.text,
       'level': valueItem
@@ -37,6 +43,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
     final dataJson = jsonDecode(res.body);
 
+    _nama.clear();
+    _email.clear();
+    _no_tlp_hp.clear();
     _username.clear();
     _password.clear();
     _level.clear();
@@ -88,13 +97,64 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Center(
           child: ListView(
             children: <Widget>[
+
+              // Field Nama
+
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    gradient:
-                    LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
-                    borderRadius: BorderRadius.circular(20.0)),
+                child: TextField(
+                  controller: _nama,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      labelText: "Name",
+                      hintText: "Name"),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+
+              // Field No Telp
+
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: _no_tlp_hp,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    labelText: "No Telp",
+                    hintText: "No Telp"),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+
+              // Field Email
+
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(10.0),
+                child: TextField(
+                  controller: _email,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      labelText: "E-Mail",
+                      hintText: "E-Mail"
+                ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+
+              // Field Username
+
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(10.0),
                 child: TextField(
                   controller: _username,
                   decoration: InputDecoration(
@@ -106,13 +166,12 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 20.0,
               ),
+
+              //Field Password
+
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    gradient:
-                    LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
-                    borderRadius: BorderRadius.circular(20.0)),
                 child: TextField(
                   controller: _password,
                   obscureText: true,
@@ -125,13 +184,12 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 20.0,
               ),
+
+              // FIeld Level
+
               Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      gradient:
-                      LinearGradient(colors: [Colors.lightBlueAccent, Colors.blueAccent]),
-                      borderRadius: BorderRadius.circular(20.0)),
                   child: ListTile(
                       title: Text("Status / Level : "),
                       trailing: DropdownButton(
@@ -146,6 +204,8 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 20.0,
               ),
+
+
               Material(
                 borderRadius: BorderRadius.circular(20.0),
                 elevation: 10.0,
