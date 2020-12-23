@@ -102,11 +102,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(10.0),
+                padding:
+                EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                 child: TextField(
                   controller: _nama,
                   decoration: InputDecoration(
-                      border: InputBorder.none,
+                      border: OutlineInputBorder(),
                       labelText: "Name",
                       hintText: "Name"),
                 ),
@@ -118,12 +119,12 @@ class _RegisterPageState extends State<RegisterPage> {
               // Field No Telp
 
               Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10.0),
+                alignment: Alignment.center,padding:
+              EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                 child: TextField(
                   controller: _no_tlp_hp,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
+                      border: OutlineInputBorder(),
                     labelText: "No Telp",
                     hintText: "No Telp"),
                 ),
@@ -135,12 +136,12 @@ class _RegisterPageState extends State<RegisterPage> {
               // Field Email
 
               Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10.0),
+                alignment: Alignment.center,padding:
+              EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                 child: TextField(
                   controller: _email,
                   decoration: InputDecoration(
-                      border: InputBorder.none,
+                      border: OutlineInputBorder(),
                       labelText: "E-Mail",
                       hintText: "E-Mail"
                 ),
@@ -153,12 +154,12 @@ class _RegisterPageState extends State<RegisterPage> {
               // Field Username
 
               Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10.0),
+                alignment: Alignment.center,padding:
+              EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                 child: TextField(
                   controller: _username,
                   decoration: InputDecoration(
-                      border: InputBorder.none,
+                      border: OutlineInputBorder(),
                       labelText: "Username",
                       hintText: "Username"),
                 ),
@@ -170,13 +171,12 @@ class _RegisterPageState extends State<RegisterPage> {
               //Field Password
 
               Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10.0),
+                alignment: Alignment.center,padding:
+              EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
                 child: TextField(
                   controller: _password,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
+                  obscureText: true,decoration: InputDecoration(
+                    border: OutlineInputBorder(),
                       labelText: "Password",
                       hintText: "Password"),
                 ),
@@ -188,19 +188,25 @@ class _RegisterPageState extends State<RegisterPage> {
               // FIeld Level
 
               Container(
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(10.0),
-                  child: ListTile(
-                      title: Text("Status / Level : "),
-                      trailing: DropdownButton(
-                        items: _myitems,
-                        value: valueItem,
-                        onChanged: (e) {
-                          setState(() {
-                            valueItem = e;
-                          });
-                        },
-                      ))),
+                  alignment: Alignment.center,padding:
+              EdgeInsets.only(left: 25.0, right: 25.0, bottom: 25.0),
+                  child:
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey)
+                    ),
+                    child: ListTile(
+                        title: Text("Status / Level : "),
+                        trailing: DropdownButton(
+                          items: _myitems,
+                          value: valueItem,
+                          onChanged: (e) {
+                            setState(() {
+                              valueItem = e;
+                            });
+                          },
+                        )),
+                  )),
               SizedBox(
                 height: 20.0,
               ),
