@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loginn/presentation/home/pages/shared/styles.dart';
 import 'package:flutter_loginn/presentation/home/pages/shared/colors.dart';
-import 'package:flutter_loginn/presentation/home/pages/shared/fryo_icons.dart';
 import 'package:flutter_loginn/presentation/home/pages/shared/Product.dart';
 import 'package:flutter_loginn/presentation/home/pages/shared/partials.dart';
 import 'package:flutter_loginn/presentation/home/pages/shared/buttons.dart';

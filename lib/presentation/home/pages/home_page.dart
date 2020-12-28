@@ -13,6 +13,7 @@ class PageHome extends StatelessWidget {
   PageHome({Key key, this.username, this.pageTitle}) : super(key: key);
 
   final String username;
+
   final String pageTitle;
 
   static Route<dynamic> route() =>

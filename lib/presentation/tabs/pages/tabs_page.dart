@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loginn/presentation/tabs/models/tab_navigation_item.dart';
 import 'package:flutter_loginn/main.dart';
 
+
+
 class TabsPage extends StatefulWidget {
+
+  TabsPage({Key key, this.username}) : super(key: key);
+
+  final String username;
+
   @override
   _TabsPageState createState() => _TabsPageState();
 }
@@ -34,6 +41,19 @@ class _TabsPageState extends State<TabsPage> {
                 ),
               ),
 
+              Expanded(
+                flex: 1,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  child: DrawerHeader(
+                    decoration:
+                    BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/parlogo.png"),
+                            fit: BoxFit.contain)),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 2,
                 child: ListView(children: [
